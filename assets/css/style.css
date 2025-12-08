@@ -378,8 +378,8 @@ main {
   position: absolute;
   top: -15px;
   right: -15px;
-  border-radius: 0 15px;
-  font-size: 13px;
+  border-radius: 0 20px;
+  font-size: 20px;
   color: var(--orange-yellow-crayola);
   background: var(--border-gradient-onyx);
   padding: 10px;
