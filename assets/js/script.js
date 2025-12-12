@@ -174,19 +174,19 @@ const projectModalLinks = document.querySelectorAll("[data-project-modal-link]")
 
 // project data (you can customize this for each project)
 const projectData = {
-  "finance": {
-    title: "Finance",
+  "jaya plafon landing page": {
+    title: "Jaya Plafon Landing Page",
     description: "A comprehensive financial management web application with advanced features for tracking expenses, income, and investments. Built with modern web technologies to provide a seamless user experience.",
     skills: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
-    images: ["./assets/images/project-1.jpg"],
+    images: ["./assets/images/project-1.png"],
     links: {
       preview: "#",
       github: "#",
       drive: "#"
     }
   },
-  "orizon": {
-    title: "Orizon",
+  "buku bersama": {
+    title: "Buku Bersama",
     description: "Modern web development project showcasing responsive design and interactive user interfaces. Features include dynamic content loading and real-time updates.",
     skills: ["HTML", "CSS", "JavaScript", "Vue.js", "Firebase"],
     images: ["./assets/images/project-2.png"],
@@ -196,19 +196,19 @@ const projectData = {
       drive: "#"
     }
   },
-  "fundo": {
-    title: "Fundo",
+  "expert system for maintenance machine": {
+    title: "Expert System for Maintenance Machine",
     description: "Creative web design project with focus on user experience and visual appeal. Includes custom animations and modern UI components.",
     skills: ["HTML", "CSS", "JavaScript", "GSAP", "SASS"],
-    images: ["./assets/images/project-3.jpg"],
+    images: ["./assets/images/project-3.png"],
     links: {
       preview: "#",
       github: "#",
       drive: "#"
     }
   },
-  "brawlhalla": {
-    title: "Brawlhalla",
+  "intergration ai dashboard": {
+    title: "Dashboard Business Intelligence",
     description: "Gaming application with interactive features and real-time multiplayer capabilities. Built for performance and user engagement.",
     skills: ["JavaScript", "WebSocket", "Node.js", "Express", "MongoDB"],
     images: ["./assets/images/project-4.png"],
@@ -218,8 +218,8 @@ const projectData = {
       drive: "#"
     }
   },
-  "dsm.": {
-    title: "DSM.",
+  "climate disease analytics": {
+    title: "climate disease analytics",
     description: "Design system management platform with component library and documentation. Streamlines design workflow and ensures consistency.",
     skills: ["React", "TypeScript", "Storybook", "CSS Modules"],
     images: ["./assets/images/project-5.png"],
@@ -229,8 +229,8 @@ const projectData = {
       drive: "#"
     }
   },
-  "metaspark": {
-    title: "MetaSpark",
+  "machine learning faskes prediction": {
+    title: "Machine Learning Faskes Prediction",
     description: "Social media platform with advanced features for content creation and sharing. Includes real-time notifications and analytics.",
     skills: ["React", "Node.js", "Socket.io", "PostgreSQL", "AWS"],
     images: ["./assets/images/project-6.png"],
