@@ -203,7 +203,7 @@
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
+            <button class="navbar-link" data-nav-link>Chat me!</button>
           </li>
 
         </ul>
@@ -506,6 +506,16 @@
             </li>
 
             <li class="clients-item">
+              <img src="./assets/images/logo-15.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <img src="./assets/images/logo-13.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
               <img src="./assets/images/logo-5.png" alt="client logo">
               </a>
             </li>
@@ -542,6 +552,11 @@
 
             <li class="clients-item">
               <img src="./assets/images/logo-12.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <img src="./assets/images/logo-14.png" alt="client logo">
               </a>
             </li>
 
@@ -1543,10 +1558,10 @@
         - #CONTACT
       -->
 
-      <article class="contact" data-page="contact">
+      <article class="chat me!" data-page="chat me!">
 
         <header>
-          <h2 class="h2 article-title">Contact</h2>
+          <h2 class="h2 article-title">Living in</h2>
         </header>
 
         <section class="mapbox" data-mapbox>
@@ -1558,25 +1573,26 @@
         </section>
 
         <section class="contact-form">
+          <h3 class="h3 form-title">Chat with Andre's AI</h3>
 
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+          <div class="chat-container">
+            <div class="chat-box" id="chat-box">
+              <div class="chat-message bot-message">
+                <p>Haloooooo, Whats uppp</p>
+              </div>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
+            <div class="chat-input-wrapper">
+              <input type="text" id="chat-input" class="form-input" placeholder="Type your question..." required>
+              <button class="form-btn" id="chat-reset-btn" title="Reset Chat">
+                <ion-icon name="refresh"></ion-icon>
+              </button>
+              <button class="form-btn" id="chat-send-btn">
+                <ion-icon name="paper-plane"></ion-icon>
+              </button>
+            </div>
+          </div>
+        </section>
 
         </section>
 
@@ -1865,6 +1881,8 @@
   <!--
     - custom js link
   -->
+  <script src="./assets/js/knowledge_base.js"></script>
+  <script src="./assets/js/chat.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/simulations.js"></script>
   <script src="./assets/js/gridmaster.js"></script>

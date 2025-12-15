@@ -298,7 +298,7 @@ const projectData = {
     title: "Automatic Rice Weighing System",
     description: "Close Loop Control and IoT Project. A smart system designed to automate rice weighing with high precision using load cells and ESP32 microcontroller, featuring real-time monitoring and control.",
     skills: ["IoT", "ESP32", "Load Cell", "Control Systems", "C++", "Automation"],
-    images: ["./assets/images/IoT.png"],
+    images: ["./assets/images/project-10.png"],
     links: {
       preview: "https://youtu.be/v72xuCXyyV0?si=R-y_TOnzI_9kcfp7",
       github: "https://github.com/Andre2404/Dispenser-Beras-Cerdas",
@@ -320,7 +320,7 @@ const projectData = {
     title: "Autonomous Line Follower Fire-Fighting Chassis & System Design",
     description: "Robotics & Mechatronic Fire Alarm system. An autonomous robot chassis designed to follow lines and detect/extinguish fires, integrating sensor fusion for navigation and hazard response.",
     skills: ["Robotics", "Mechatronics", "Sensors", "Arduino", "System Design"],
-    images: ["./assets/images/IoT.png"],
+    images: ["./assets/images/project-12.png"],
     links: {
       preview: "#",
       github: "#",
@@ -331,7 +331,7 @@ const projectData = {
     title: "Smart Predictive Maintenance System for Digital Twin Motor Health Monitoring",
     description: "IoT & Machine Learning-Based Industrial Diagnostics. A digital twin system for monitoring motor health, utilizing IoT sensors and machine learning algorithms to predict failures and optimize maintenance schedules.",
     skills: ["IoT", "Machine Learning", "Digital Twin", "Predictive Maintenance", "Data Analytics"],
-    images: ["./assets/images/IoT.png"],
+    images: ["./assets/images/project-13.png"],
     links: {
       preview: "#",
       github: "#",
