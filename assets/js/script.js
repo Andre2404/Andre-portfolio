@@ -140,20 +140,40 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// Initialize: Hide all pages except the active one on page load
+for (let i = 0; i < pages.length; i++) {
+  if (!pages[i].classList.contains("active")) {
+    pages[i].style.display = "none";
+  }
+}
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    const pageName = this.innerHTML.toLowerCase().trim();
 
+    // Hide all pages first
     for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+      pages[i].classList.remove("active");
+      pages[i].style.display = "none";
+    }
+
+    // Show the selected page
+    for (let i = 0; i < pages.length; i++) {
+      if (pageName === pages[i].dataset.page) {
         pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
+        pages[i].style.display = "block";
         window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        break;
       }
     }
+
+    // Remove active from all nav links first
+    for (let j = 0; j < navigationLinks.length; j++) {
+      navigationLinks[j].classList.remove("active");
+    }
+    // Add active to clicked link
+    this.classList.add("active");
 
   });
 }
@@ -176,8 +196,8 @@ const projectModalLinks = document.querySelectorAll("[data-project-modal-link]")
 const projectData = {
   "jaya plafon landing page": {
     title: "Jaya Plafon Landing Page",
-    description: "A comprehensive financial management web application with advanced features for tracking expenses, income, and investments. Built with modern web technologies to provide a seamless user experience.",
-    skills: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
+    description: "A company profile website built using modern web technologies like Vite, TypeScript, React, shadcn-ui, and Tailwind CSS. Enhanced with lovable.AI for interactive features, this project showcases expertise in frontend development and cutting-edge web architecture.",
+    skills: ["Vibe Code", "CSS", "HTML", "React", "typescript"],
     images: ["./assets/images/project-1.png"],
     links: {
       preview: "#",
@@ -187,8 +207,8 @@ const projectData = {
   },
   "buku bersama": {
     title: "Buku Bersama",
-    description: "Modern web development project showcasing responsive design and interactive user interfaces. Features include dynamic content loading and real-time updates.",
-    skills: ["HTML", "CSS", "JavaScript", "Vue.js", "Firebase"],
+    description: "A collaborative education app that lets students share lecture notes as open learning resources. Integrated an AI pipeline using a public Hugging Face OCR model and an LLM powered by Google Gemini (via LangChain) to analyze uploaded documents and automatically generate quiz reminders and review alerts to reduce knowledge decay. The system features use Pinecone vector database for semantic search, and a backend fully deployed with Supabase on Render’s free tier.",
+    skills: ["LLM", "OCR Processing", "Semantic Search", "Pinecone", "Langchain"],
     images: ["./assets/images/project-2.png"],
     links: {
       preview: "#",
@@ -198,8 +218,8 @@ const projectData = {
   },
   "expert system for maintenance machine": {
     title: "Expert System for Maintenance Machine",
-    description: "Creative web design project with focus on user experience and visual appeal. Includes custom animations and modern UI components.",
-    skills: ["HTML", "CSS", "JavaScript", "GSAP", "SASS"],
+    description: "Developed an expert system with a JSON-based knowledge base and an inference engine using forward chaining and certainty factor scoring. The system identifies the most probable diagnosis based on layered rule evaluation and confidence weighting, delivering clear and explainable output to users.",
+    skills: ["Expert System", "Rule-Based Systems", "Forward Chaining Logic", "JSON Knowledge Structuring", "SASS"],
     images: ["./assets/images/project-3.png"],
     links: {
       preview: "#",
@@ -209,8 +229,8 @@ const projectData = {
   },
   "intergration ai dashboard": {
     title: "Dashboard Business Intelligence",
-    description: "Gaming application with interactive features and real-time multiplayer capabilities. Built for performance and user engagement.",
-    skills: ["JavaScript", "WebSocket", "Node.js", "Express", "MongoDB"],
+    description: "built an interactive business-intelligence dashboard using the Reflex full-Python framework to visualize key financial KPIs: total revenue, revenue trends, revenue by category, and other operational metrics.  I also embedded a text-generation feature powered by a pretrained model via the Hugging Face API to produce automated narrative summaries and insights (e.g., weekly highlights, anomaly explanations) that help non-technical stakeholders quickly grasp trends.",
+    skills: ["Reflex", "Data Aggregation", "KPI Design", "UX for Data Products", "Python"],
     images: ["./assets/images/project-4.png"],
     links: {
       preview: "#",
@@ -220,8 +240,8 @@ const projectData = {
   },
   "climate disease analytics": {
     title: "climate disease analytics",
-    description: "Design system management platform with component library and documentation. Streamlines design workflow and ensures consistency.",
-    skills: ["React", "TypeScript", "Storybook", "CSS Modules"],
+    description: "Built an intelligence dashboard to analyze and visualize climate-related disease spread based on Kaggle epidemiology datasets. Implemented predictive modeling to forecast outbreak trends using climate variables as key indicators. Delivered interactive map visuals, time-series insights, and disease distribution filters to support data-driven public health decisions. End-to-end workflow created fully in Python with Reflex, ensuring modular, scalable, and production-ready architecture.",
+    skills: ["Reflex", "Predictive Modeling", "Epidemiological Data Analysis", "Data Visualization", "Python"],
     images: ["./assets/images/project-5.png"],
     links: {
       preview: "#",
@@ -231,8 +251,8 @@ const projectData = {
   },
   "machine learning faskes prediction": {
     title: "Machine Learning Faskes Prediction",
-    description: "Social media platform with advanced features for content creation and sharing. Includes real-time notifications and analytics.",
-    skills: ["React", "Node.js", "Socket.io", "PostgreSQL", "AWS"],
+    description: "Built a machine learning model to predict whether patients should be referred to higher-level BPJS healthcare facilities. The project started with full EDA on nationwide BPJS visit and facility datasets, focusing on patient demographics, service types, and historical referral patterns. The modeling stage applied Random Forest, XGBoost, and Logistic Regression, followed by evaluation and tuning. The final model achieved an average F1-score of 0.2868 (I know its bad)",
+    skills: ["Machine Learning Modeling", "EDA & Data Cleaning", "Pandas", "Scikit Learning", "Model Evaluation (F1-Score)"],
     images: ["./assets/images/project-6.png"],
     links: {
       preview: "#",
@@ -240,8 +260,8 @@ const projectData = {
       drive: "#"
     }
   },
-  "summary": {
-    title: "Summary",
+  "picare": {
+    title: "Picare AI Skin Analysis",
     description: "Data visualization and analytics dashboard for business intelligence. Provides insights through interactive charts and reports.",
     skills: ["React", "D3.js", "Python", "Flask", "PostgreSQL"],
     images: ["./assets/images/project-7.png"],
@@ -251,19 +271,19 @@ const projectData = {
       drive: "#"
     }
   },
-  "task manager": {
-    title: "Task Manager",
-    description: "Productivity application for managing tasks and projects. Features include drag-and-drop, team collaboration, and deadline tracking.",
+  "bitcoin simulation": {
+    title: "Bitcoin Simulation for Early Investor",
+    description: "A beginner-friendly, web-based cryptocurrency investment simulator designed to help users calculate potential profits and losses without risking real money.",
     skills: ["Vue.js", "Node.js", "MongoDB", "Express", "JWT"],
-    images: ["./assets/images/project-8.jpg"],
+    images: ["./assets/images/project-8.png"],
     links: {
       preview: "#",
       github: "#",
       drive: "#"
     }
   },
-  "arrival": {
-    title: "Arrival",
+  "sandpal": {
+    title: "sandpal : AI finance assistant for sandwich generation",
     description: "Travel booking platform with integrated payment system and real-time availability. Provides seamless booking experience for users.",
     skills: ["React", "Redux", "Node.js", "Stripe API", "MongoDB"],
     images: ["./assets/images/project-9.png"],
@@ -386,6 +406,14 @@ if (projectOverlay) {
   });
 }
 
+// Prevent modal from closing when clicking inside modal content
+const projectModal = document.querySelector(".project-modal");
+if (projectModal) {
+  projectModal.addEventListener("click", function(e) {
+    e.stopPropagation();
+  });
+}
+
 // image zoom functionality
 const projectGalleryMain = document.querySelector(".project-gallery-main");
 if (projectGalleryMain) {
@@ -409,5 +437,75 @@ document.addEventListener("keydown", function(e) {
     if (projectModalContainer && projectModalContainer.classList.contains("active")) {
       projectModalFunc();
     }
+    if (certificateModalContainer && certificateModalContainer.classList.contains("active")) {
+      certificateModalFunc();
+    }
   }
 });
+
+
+
+// ============================================
+// Certificate Modal Functionality
+// ============================================
+
+const certificateImages = document.querySelectorAll(".certificate-img");
+const certificateModalContainer = document.querySelector("[data-certificate-modal-container]");
+const certificateModalCloseBtn = document.querySelector("[data-certificate-modal-close-btn]");
+const certificateOverlay = document.querySelector("[data-certificate-overlay]");
+const certificateModalImg = document.querySelector("[data-certificate-modal-img]");
+
+// Certificate modal toggle function
+const certificateModalFunc = function () {
+  certificateModalContainer.classList.toggle("active");
+  certificateOverlay.classList.toggle("active");
+  document.body.style.overflow = certificateModalContainer.classList.contains("active") ? "hidden" : "";
+}
+
+// Add click event to all certificate images
+if (certificateImages.length > 0) {
+  certificateImages.forEach(function(img) {
+    // Add cursor pointer style
+    img.style.cursor = "pointer";
+    
+    img.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Prevent parent link from being triggered
+      const parentLink = this.closest('a');
+      if (parentLink) {
+        parentLink.style.pointerEvents = 'none';
+        setTimeout(() => {
+          parentLink.style.pointerEvents = 'auto';
+        }, 100);
+      }
+      
+      const imgSrc = this.getAttribute("data-certificate-img") || this.src;
+      const imgAlt = this.alt || "Certificate";
+      
+      if (certificateModalImg) {
+        certificateModalImg.src = imgSrc;
+        certificateModalImg.alt = imgAlt;
+      }
+      
+      if (certificateModalContainer) {
+        certificateModalFunc();
+      }
+    });
+  });
+}
+
+// Add click event to modal close button
+if (certificateModalCloseBtn) {
+  certificateModalCloseBtn.addEventListener("click", certificateModalFunc);
+}
+
+// Add click event to overlay
+if (certificateOverlay) {
+  certificateOverlay.addEventListener("click", function(e) {
+    if (e.target === certificateOverlay) {
+      certificateModalFunc();
+    }
+  });
+}
