@@ -186,6 +186,7 @@ const projectModalContainer = document.querySelector("[data-project-modal-contai
 const projectModalCloseBtn = document.querySelector("[data-project-modal-close-btn]");
 const projectOverlay = document.querySelector("[data-project-overlay]");
 const projectModalMainImg = document.querySelector("[data-project-modal-main-img]");
+const projectModalMainVideo = document.querySelector("[data-project-modal-main-video]");
 const projectModalTitle = document.querySelector("[data-project-modal-title]");
 const projectModalDescription = document.querySelector("[data-project-modal-description]");
 const projectModalSkills = document.querySelector("[data-project-modal-skills]");
@@ -292,6 +293,50 @@ const projectData = {
       github: "#",
       drive: "#"
     }
+  },
+  "automatic rice weighing system": {
+    title: "Automatic Rice Weighing System",
+    description: "Close Loop Control and IoT Project. A smart system designed to automate rice weighing with high precision using load cells and ESP32 microcontroller, featuring real-time monitoring and control.",
+    skills: ["IoT", "ESP32", "Load Cell", "Control Systems", "C++", "Automation"],
+    images: ["./assets/images/IoT.png"],
+    links: {
+      preview: "https://youtu.be/v72xuCXyyV0?si=R-y_TOnzI_9kcfp7",
+      github: "https://github.com/Andre2404/Dispenser-Beras-Cerdas",
+      drive: "#"
+    }
+  },
+  "automatic robotic arm simulation": {
+    title: "Automatic Robotic Arm Simulation",
+    description: "Industrial Robotic Simulation. A comprehensive simulation of a robotic arm for industrial applications, demonstrating kinematics and automated control sequences.",
+    skills: ["Robotics", "Simulation", "Kinematics", "Automation", "Visualisation"],
+    images: ["./assets/images/arm.mp4"],
+    links: {
+      preview: "#",
+      github: "#",
+      drive: "#"
+    }
+  },
+  "autonomous line follower fire-fighting chassis & system design": {
+    title: "Autonomous Line Follower Fire-Fighting Chassis & System Design",
+    description: "Robotics & Mechatronic Fire Alarm system. An autonomous robot chassis designed to follow lines and detect/extinguish fires, integrating sensor fusion for navigation and hazard response.",
+    skills: ["Robotics", "Mechatronics", "Sensors", "Arduino", "System Design"],
+    images: ["./assets/images/IoT.png"],
+    links: {
+      preview: "#",
+      github: "#",
+      drive: "#"
+    }
+  },
+  "smart predictive maintenance system for digital twin motor health monitoring": {
+    title: "Smart Predictive Maintenance System for Digital Twin Motor Health Monitoring",
+    description: "IoT & Machine Learning-Based Industrial Diagnostics. A digital twin system for monitoring motor health, utilizing IoT sensors and machine learning algorithms to predict failures and optimize maintenance schedules.",
+    skills: ["IoT", "Machine Learning", "Digital Twin", "Predictive Maintenance", "Data Analytics"],
+    images: ["./assets/images/IoT.png"],
+    links: {
+      preview: "#",
+      github: "#",
+      drive: "#"
+    }
   }
 };
 
@@ -322,19 +367,62 @@ const loadProjectModal = function (projectName, projectItemElement) {
     projectModalSkills.appendChild(skillTag);
   });
 
-  // Set images
+  // Set images/video
   if (project.images && project.images.length > 0) {
-    projectModalMainImg.src = project.images[0];
-    projectModalMainImg.alt = project.title;
+    const mainSrc = project.images[0];
+    const isVideo = mainSrc.toLowerCase().endsWith('.mp4');
+
+    if (isVideo) {
+      projectModalMainImg.style.display = 'none';
+      if (projectModalMainVideo) {
+        projectModalMainVideo.src = mainSrc;
+        projectModalMainVideo.style.display = 'block';
+        projectModalMainVideo.load();
+        projectModalMainVideo.play().catch(e => console.log("Autoplay prevented:", e));
+      }
+    } else {
+      if (projectModalMainVideo) {
+        projectModalMainVideo.pause();
+        projectModalMainVideo.style.display = 'none';
+      }
+      projectModalMainImg.src = mainSrc;
+      projectModalMainImg.alt = project.title;
+      projectModalMainImg.style.display = 'block';
+    }
 
     // Set thumbnails
     projectGalleryThumbnails.innerHTML = "";
     project.images.forEach((imgSrc, index) => {
       const thumbnail = document.createElement("div");
       thumbnail.className = "project-thumbnail" + (index === 0 ? " active" : "");
-      thumbnail.innerHTML = `<img src="${imgSrc}" alt="${project.title} thumbnail ${index + 1}">`;
-      thumbnail.addEventListener("click", function() {
-        projectModalMainImg.src = imgSrc;
+
+      if (imgSrc.toLowerCase().endsWith('.mp4')) {
+        // Create video thumbnail (or use a placeholder icon)
+        thumbnail.innerHTML = `<div class="video-thumbnail-indicator">▶</div><video muted src="${imgSrc}" style="width:100%; height:100%; object-fit:cover;"></video>`;
+      } else {
+        thumbnail.innerHTML = `<img src="${imgSrc}" alt="${project.title} thumbnail ${index + 1}">`;
+      }
+
+      thumbnail.addEventListener("click", function () {
+        const isThumbVideo = imgSrc.toLowerCase().endsWith('.mp4');
+
+        if (isThumbVideo) {
+          projectModalMainImg.style.display = 'none';
+          if (projectModalMainVideo) {
+            projectModalMainVideo.src = imgSrc;
+            projectModalMainVideo.style.display = 'block';
+            projectModalMainVideo.load();
+            projectModalMainVideo.play().catch(e => console.log("Play error:", e));
+          }
+        } else {
+          if (projectModalMainVideo) {
+            projectModalMainVideo.pause();
+            projectModalMainVideo.style.display = 'none';
+          }
+          projectModalMainImg.src = imgSrc;
+          projectModalMainImg.style.display = 'block';
+        }
+
         document.querySelectorAll(".project-thumbnail").forEach(thumb => thumb.classList.remove("active"));
         this.classList.add("active");
       });
@@ -344,11 +432,11 @@ const loadProjectModal = function (projectName, projectItemElement) {
 
   // Get links from project item buttons if available, otherwise use default data
   const projectItemLinks = projectItemElement ? projectItemElement.querySelectorAll(".project-link-btn") : null;
-  
+
   // Set links
   projectModalLinks.forEach(linkBtn => {
     const linkType = linkBtn.dataset.projectModalLink;
-    
+
     // Try to get link from project item first
     if (projectItemLinks) {
       const itemLink = Array.from(projectItemLinks).find(link => link.dataset.linkType === linkType);
@@ -358,7 +446,7 @@ const loadProjectModal = function (projectName, projectItemElement) {
         return;
       }
     }
-    
+
     // Fallback to project data
     if (project.links && project.links[linkType]) {
       linkBtn.href = project.links[linkType];
@@ -385,7 +473,7 @@ for (let i = 0; i < projectItems.length; i++) {
   // Prevent modal from opening when clicking project links
   const projectLinks = projectItems[i].querySelectorAll(".project-link-btn");
   projectLinks.forEach(link => {
-    link.addEventListener("click", function(e) {
+    link.addEventListener("click", function (e) {
       e.stopPropagation();
       // Allow link to work normally
     });
@@ -398,7 +486,7 @@ if (projectModalCloseBtn) {
 }
 
 if (projectOverlay) {
-  projectOverlay.addEventListener("click", function(e) {
+  projectOverlay.addEventListener("click", function (e) {
     // Only close if clicking directly on overlay, not on modal content
     if (e.target === projectOverlay) {
       projectModalFunc();
@@ -409,7 +497,7 @@ if (projectOverlay) {
 // Prevent modal from closing when clicking inside modal content
 const projectModal = document.querySelector(".project-modal");
 if (projectModal) {
-  projectModal.addEventListener("click", function(e) {
+  projectModal.addEventListener("click", function (e) {
     e.stopPropagation();
   });
 }
@@ -417,7 +505,7 @@ if (projectModal) {
 // image zoom functionality
 const projectGalleryMain = document.querySelector(".project-gallery-main");
 if (projectGalleryMain) {
-  projectGalleryMain.addEventListener("click", function() {
+  projectGalleryMain.addEventListener("click", function () {
     this.classList.toggle("zoomed");
     if (this.classList.contains("zoomed")) {
       document.body.style.overflow = "hidden";
@@ -428,7 +516,7 @@ if (projectGalleryMain) {
 }
 
 // Close zoomed image on escape key
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     if (projectGalleryMain && projectGalleryMain.classList.contains("zoomed")) {
       projectGalleryMain.classList.remove("zoomed");
@@ -464,14 +552,14 @@ const certificateModalFunc = function () {
 
 // Add click event to all certificate images
 if (certificateImages.length > 0) {
-  certificateImages.forEach(function(img) {
+  certificateImages.forEach(function (img) {
     // Add cursor pointer style
     img.style.cursor = "pointer";
-    
-    img.addEventListener("click", function(e) {
+
+    img.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      
+
       // Prevent parent link from being triggered
       const parentLink = this.closest('a');
       if (parentLink) {
@@ -480,15 +568,15 @@ if (certificateImages.length > 0) {
           parentLink.style.pointerEvents = 'auto';
         }, 100);
       }
-      
+
       const imgSrc = this.getAttribute("data-certificate-img") || this.src;
       const imgAlt = this.alt || "Certificate";
-      
+
       if (certificateModalImg) {
         certificateModalImg.src = imgSrc;
         certificateModalImg.alt = imgAlt;
       }
-      
+
       if (certificateModalContainer) {
         certificateModalFunc();
       }
@@ -503,7 +591,7 @@ if (certificateModalCloseBtn) {
 
 // Add click event to overlay
 if (certificateOverlay) {
-  certificateOverlay.addEventListener("click", function(e) {
+  certificateOverlay.addEventListener("click", function (e) {
     if (e.target === certificateOverlay) {
       certificateModalFunc();
     }
