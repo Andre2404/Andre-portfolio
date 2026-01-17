@@ -342,7 +342,7 @@ const projectData = {
     title: "Battery Cell Machine Safety Design",
     description: "Lithium-ion batteries play a pivotal role in a wide range of applications, from electronic devices to large-scale electrified transportation systems and grid-scale energy storage. Nevertheless, they are vulnerable to both progressive aging and unexpected failures, which can result in catastrophic events such as explosions or fires. Given their expanding global presence, the safety of these batteries and potential hazards from serious malfunctions are now major public concerns.<br><br>Over the past decade, scholars and industry experts are intensively exploring methods to monitor battery safety, spanning from materials to cell, pack and system levels and across various spectral, spatial, and temporal scopes. This project explores the intricacies in predicting battery system evolution and delves into the specialized knowledge essential for data-driven, machine learning models.<br><br>Key areas covered include: (1) supervised and reinforcement learning integrated with battery models, apt for predicting faults/failures and probing into failure causes and safety protocols at the cell level; (2) unsupervised, semi-supervised, and self-supervised learning, advantageous for harnessing vast data sets from battery modules/packs; (3) few-shot learning tailored for gleaning insights from scarce examples, alongside physics-informed machine learning to bolster model generalization and optimize training in data-scarce settings.",
     skills: ["Battery Management System", "Safety-Critical Design", "Pneumatic Control", "FluidSim", "ISO Safety Standards", "PLC Programming", "Machine Learning", "Fault Diagnosis"],
-    images: ["./assets/images/project-6.png", "./assets/images/bms.jpg", "./assets/images/bms-2.jpg"],
+    images: ["./assets/images/bms.jpg", "./assets/images/bms-2.jpg"],
     links: {
       paper: "https://www.sciencedirect.com/topics/engineering/battery-safety-issue",
       article: "https://www.ayaatech.com/news/how-battery-pack-design-for-electric-vehicle-impacts-performance-safety-and-lifecycle/",
@@ -557,26 +557,153 @@ if (projectModal) {
   });
 }
 
-// image zoom functionality
+// ============================================
+// Enhanced Image Lightbox Functionality
+// ============================================
+
+let currentLightboxImages = [];
+let currentLightboxIndex = 0;
+let currentZoom = 1;
+
+const imageLightbox = document.getElementById("imageLightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxVideo = document.getElementById("lightboxVideo");
+const lightboxCounter = document.getElementById("lightboxCounter");
+
+// Open lightbox with current project images
+function openLightbox(images, startIndex = 0) {
+  if (!images || images.length === 0) return;
+
+  currentLightboxImages = images;
+  currentLightboxIndex = startIndex;
+  currentZoom = 1;
+
+  showCurrentLightboxImage();
+  imageLightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+// Close lightbox
+function closeLightbox() {
+  imageLightbox.classList.remove("active");
+  document.body.style.overflow = "";
+
+  // Stop video if playing
+  if (lightboxVideo) {
+    lightboxVideo.pause();
+    lightboxVideo.src = "";
+  }
+}
+
+// Navigate through images
+function navigateLightbox(direction) {
+  currentLightboxIndex += direction;
+
+  if (currentLightboxIndex >= currentLightboxImages.length) {
+    currentLightboxIndex = 0;
+  } else if (currentLightboxIndex < 0) {
+    currentLightboxIndex = currentLightboxImages.length - 1;
+  }
+
+  currentZoom = 1;
+  showCurrentLightboxImage();
+}
+
+// Show current image/video
+function showCurrentLightboxImage() {
+  const src = currentLightboxImages[currentLightboxIndex];
+  const isVideo = src.toLowerCase().endsWith('.mp4');
+
+  if (isVideo) {
+    lightboxImg.style.display = "none";
+    lightboxVideo.src = src;
+    lightboxVideo.style.display = "block";
+    lightboxVideo.style.transform = `scale(${currentZoom})`;
+    lightboxVideo.load();
+  } else {
+    lightboxVideo.style.display = "none";
+    lightboxVideo.pause();
+    lightboxImg.src = src;
+    lightboxImg.style.display = "block";
+    lightboxImg.style.transform = `scale(${currentZoom})`;
+  }
+
+  lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxImages.length}`;
+}
+
+// Zoom controls
+function zoomLightbox(delta) {
+  currentZoom = Math.max(0.5, Math.min(3, currentZoom + delta));
+
+  if (lightboxImg.style.display !== "none") {
+    lightboxImg.style.transform = `scale(${currentZoom})`;
+  }
+  if (lightboxVideo.style.display !== "none") {
+    lightboxVideo.style.transform = `scale(${currentZoom})`;
+  }
+}
+
+function resetZoom() {
+  currentZoom = 1;
+  lightboxImg.style.transform = "scale(1)";
+  lightboxVideo.style.transform = "scale(1)";
+}
+
+// Add click event to project gallery main to open lightbox
 const projectGalleryMain = document.querySelector(".project-gallery-main");
 if (projectGalleryMain) {
   projectGalleryMain.addEventListener("click", function () {
-    this.classList.toggle("zoomed");
-    if (this.classList.contains("zoomed")) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+    // Get current project images from thumbnails
+    const thumbnails = document.querySelectorAll(".project-thumbnail");
+    const images = [];
+    thumbnails.forEach(thumb => {
+      const img = thumb.querySelector("img");
+      const video = thumb.querySelector("video");
+      if (img) images.push(img.src);
+      else if (video) images.push(video.src);
+    });
+
+    // Find current active index
+    let activeIndex = 0;
+    thumbnails.forEach((thumb, index) => {
+      if (thumb.classList.contains("active")) activeIndex = index;
+    });
+
+    if (images.length > 0) {
+      openLightbox(images, activeIndex);
     }
   });
 }
 
-// Close zoomed image on escape key
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    if (projectGalleryMain && projectGalleryMain.classList.contains("zoomed")) {
-      projectGalleryMain.classList.remove("zoomed");
-      document.body.style.overflow = "";
+// Close lightbox when clicking outside image
+if (imageLightbox) {
+  imageLightbox.addEventListener("click", function (e) {
+    if (e.target === imageLightbox || e.target.classList.contains("image-lightbox-content")) {
+      closeLightbox();
     }
+  });
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener("keydown", function (e) {
+  // Lightbox controls
+  if (imageLightbox && imageLightbox.classList.contains("active")) {
+    if (e.key === "Escape") {
+      closeLightbox();
+    } else if (e.key === "ArrowLeft") {
+      navigateLightbox(-1);
+    } else if (e.key === "ArrowRight") {
+      navigateLightbox(1);
+    } else if (e.key === "+" || e.key === "=") {
+      zoomLightbox(0.2);
+    } else if (e.key === "-") {
+      zoomLightbox(-0.2);
+    }
+    return;
+  }
+
+  // Close project modal on escape
+  if (e.key === "Escape") {
     if (projectModalContainer && projectModalContainer.classList.contains("active")) {
       projectModalFunc();
     }
