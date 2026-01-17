@@ -2148,12 +2148,35 @@
   <script src="./assets/js/gallery.js"></script>
   <script src="./assets/js/translation.js"></script>
 
-  <!-- Modal for Image Gallery -->
-  <div id="imageModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImg">
-    <video class="modal-content" id="modalVideo" controls style="display:none;"></video>
-    <div id="caption"></div>
+  <!-- Enhanced Image Lightbox -->
+  <div id="imageLightbox" class="image-lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+    <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </button>
+    <button class="lightbox-nav next" onclick="navigateLightbox(1)">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </button>
+    <div class="image-lightbox-content">
+      <img id="lightboxImg" src="" alt="Project Image">
+      <video id="lightboxVideo" controls style="display:none;"></video>
+    </div>
+    <div class="lightbox-counter">
+      <span id="lightboxCounter">1 / 1</span>
+    </div>
+    <div class="lightbox-zoom-controls">
+      <button class="zoom-btn" onclick="zoomLightbox(-0.2)" title="Zoom Out">
+        <ion-icon name="remove-outline"></ion-icon>
+      </button>
+      <button class="zoom-btn" onclick="zoomLightbox(0.2)" title="Zoom In">
+        <ion-icon name="add-outline"></ion-icon>
+      </button>
+      <button class="zoom-btn" onclick="resetZoom()" title="Reset">
+        <ion-icon name="scan-outline"></ion-icon>
+      </button>
+    </div>
   </div>
 
   <!--
