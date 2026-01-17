@@ -1,4 +1,4 @@
-/*-----------------------------------*\
+﻿/*-----------------------------------*\
   #style.css
 \*-----------------------------------*/
 
@@ -1401,36 +1401,199 @@ main {
 
 .project-gallery-main {
   width: 100%;
-  height: 220px;
+  height: 280px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 10px;
-  cursor: zoom-in;
+  cursor: pointer;
   position: relative;
+  background: var(--onyx);
 }
 
-.project-gallery-main img {
+.project-gallery-main::after {
+  content: "🔍 Click to zoom";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--light-gray);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  opacity: 0;
+  transition: var(--transition-1);
+  pointer-events: none;
+}
+
+.project-gallery-main:hover::after {
+  opacity: 1;
+}
+
+.project-gallery-main img,
+.project-gallery-main video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: var(--transition-1);
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-.project-gallery-main.zoomed {
+.project-gallery-main:hover img {
+  transform: scale(1.02);
+}
+
+/* Image Lightbox Overlay */
+.image-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.image-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-lightbox-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-lightbox img,
+.image-lightbox video {
+  max-width: 95vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.image-lightbox.active img,
+.image-lightbox.active video {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 101;
+}
+
+.lightbox-close:hover {
+  background: var(--orange-yellow-crayola);
+  border-color: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  transform: rotate(90deg);
+}
+
+.lightbox-nav {
   position: fixed;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  height: 90vh;
-  z-index: 30;
-  cursor: zoom-out;
-  border-radius: 12px;
-  box-shadow: var(--shadow-5);
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 101;
 }
 
-.project-gallery-main.zoomed img {
-  object-fit: contain;
+.lightbox-nav:hover {
+  background: var(--orange-yellow-crayola);
+  border-color: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+}
+
+.lightbox-nav.prev {
+  left: 20px;
+}
+
+.lightbox-nav.next {
+  right: 20px;
+}
+
+.lightbox-counter {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  z-index: 101;
+}
+
+.lightbox-zoom-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 101;
+}
+
+.zoom-btn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.zoom-btn:hover {
+  background: var(--orange-yellow-crayola);
+  border-color: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+}
+
+/* Hide old zoom styles */
+.project-gallery-main.zoomed {
+  display: none;
 }
 
 .project-gallery-thumbnails {
@@ -4318,4 +4481,162 @@ textarea.form-input::-webkit-resizer {
 
 .chat-input-wrapper .form-btn:hover {
   background: var(--bg-gradient-yellow-1);
+}
+
+/* --- LANGUAGE SLIDER --- */
+.lang-switcher-wrapper {
+  margin: 15px 0;
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center;
+}
+
+.slide-toggle {
+  position: relative;
+  display: flex;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 30px;
+  padding: 4px;
+  width: 180px;
+  /* Adjust width as needed */
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  margin: auto;
+}
+
+.slide-toggle input {
+  display: none;
+}
+
+.toggle-item {
+  flex: 1;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--light-gray);
+  z-index: 2;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.slider-bg {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: calc(100% - 8px);
+  width: calc(33.33% - 4px);
+  background: var(--orange-yellow-crayola);
+  border-radius: 25px;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Slider Logic */
+#lang-en:checked~.slider-bg {
+  transform: translateX(0%);
+}
+
+#lang-de:checked~.slider-bg {
+  transform: translateX(100%);
+}
+
+#lang-zh:checked~.slider-bg {
+  transform: translateX(200%);
+}
+
+#lang-en:checked+label,
+#lang-de:checked+label,
+#lang-zh:checked+label {
+  color: var(--eerie-black-2);
+  font-weight: 700;
+}
+
+/* --- EXPERIENCE GALLERY FIX --- */
+.experience-gallery {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.gallery-thumb {
+  width: 60px !important;
+  /* Force small size */
+  height: 45px !important;
+  /* Force small size */
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid var(--jet);
+  transition: transform 0.3s ease;
+}
+
+.gallery-thumb:hover {
+  transform: scale(1.1);
+  border-color: var(--orange-yellow-crayola);
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: auto;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 219, 112, 0.2);
+  animation: zoom 0.4s;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0.8);
+    opacity: 0
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1
+  }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+/* Hide Google Translate Widget */
+#google_translate_element {
+  display: none;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
 }
