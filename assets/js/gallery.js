@@ -1,43 +1,71 @@
 
-// Modal Image Gallery logic
-// Modal Image Gallery logic
-function openModal(element) {
-  var modal = document.getElementById("imageModal");
-  var modalImg = document.getElementById("modalImg");
-  var modalVideo = document.getElementById("modalVideo"); // Add reference to video element
-  var captionText = document.getElementById("caption");
+// Modal Image Gallery logic for Resume section
+// Simple popup - click overlay to close
 
-  modal.style.display = "block";
+function openModal(element) {
+  const imageLightbox = document.getElementById("imageLightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxVideo = document.getElementById("lightboxVideo");
+
+  if (!imageLightbox) return;
+
+  // Add simple-mode class to hide zoom controls/nav
+  imageLightbox.classList.add("simple-mode");
 
   if (element.tagName === 'VIDEO') {
-    modalImg.style.display = "none";
-    modalVideo.style.display = "block";
-    modalVideo.src = element.src;
-    captionText.innerHTML = "";
-    modalVideo.play();
+    lightboxImg.style.display = "none";
+    lightboxVideo.style.display = "block";
+    lightboxVideo.src = element.src;
+    lightboxVideo.style.transform = "scale(1)";
+    lightboxVideo.load();
   } else {
-    modalVideo.style.display = "none";
-    modalVideo.pause();
-    modalImg.style.display = "block";
-    modalImg.src = element.src;
-    captionText.innerHTML = element.alt;
+    lightboxVideo.style.display = "none";
+    if (lightboxVideo) lightboxVideo.pause();
+    lightboxImg.style.display = "block";
+    lightboxImg.src = element.src;
+    lightboxImg.style.transform = "scale(1)";
   }
+
+  imageLightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
-  var modal = document.getElementById("imageModal");
-  var modalVideo = document.getElementById("modalVideo");
-  if (modalVideo) {
-    modalVideo.pause();
-    modalVideo.currentTime = 0;
+  const imageLightbox = document.getElementById("imageLightbox");
+  const lightboxVideo = document.getElementById("lightboxVideo");
+
+  if (imageLightbox) {
+    imageLightbox.classList.remove("active");
+    imageLightbox.classList.remove("simple-mode");
+    document.body.style.overflow = "";
   }
-  modal.style.display = "none";
+
+  if (lightboxVideo) {
+    lightboxVideo.pause();
+    lightboxVideo.src = "";
+  }
 }
 
-// Close modal when clicking outside
-window.onclick = function (event) {
-  var modal = document.getElementById("imageModal");
-  if (event.target == modal) {
-    modal.style.display = "none";
+// Make closeLightbox available globally for both modes
+window.closeLightbox = function () {
+  const imageLightbox = document.getElementById("imageLightbox");
+  const lightboxVideo = document.getElementById("lightboxVideo");
+
+  if (imageLightbox) {
+    imageLightbox.classList.remove("active");
+    imageLightbox.classList.remove("simple-mode");
+    document.body.style.overflow = "";
   }
-}
+
+  if (lightboxVideo) {
+    lightboxVideo.pause();
+    lightboxVideo.src = "";
+  }
+};
+
+// Close on ESC key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
