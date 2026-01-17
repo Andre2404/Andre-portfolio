@@ -318,25 +318,73 @@ const projectData = {
   },
   "autonomous line follower fire-fighting chassis & system design": {
     title: "Autonomous Line Follower Fire-Fighting Chassis & System Design",
-    description: "Robotics & Mechatronic Fire Alarm system. An autonomous robot chassis designed to follow lines and detect/extinguish fires, integrating sensor fusion for navigation and hazard response.",
-    skills: ["Robotics", "Mechatronics", "Sensors", "Arduino", "System Design"],
-    images: ["./assets/images/project-12.png"],
+    description: "Robotics & Mechatronic Fire Alarm system. An autonomous robot chassis designed to follow lines and detect/extinguish fires, integrating sensor fusion for navigation and hazard response. Features custom 3D-printed chassis, infrared line sensors, flame detection module, and water pump extinguishing system.",
+    skills: ["Robotics", "Mechatronics", "Sensors", "Arduino", "System Design", "3D Printing", "SketchUp"],
+    images: ["./assets/images/project-12.jpeg", "./assets/images/firefight-1.mp4"],
     links: {
-      preview: "#",
-      github: "#",
-      drive: "#"
+      preview: "https://grabcad.com/library/chassis-line-follower-robot-fire-fighting-system-1",
+      github: "https://github.com/MuzakkiAlAarif/RoboT-Line-Follower-Fighting-System",
+      youtube: "#"
     }
   },
   "smart predictive maintenance system for digital twin motor health monitoring": {
     title: "Smart Predictive Maintenance System for Digital Twin Motor Health Monitoring",
-    description: "IoT & Machine Learning-Based Industrial Diagnostics. A digital twin system for monitoring motor health, utilizing IoT sensors and machine learning algorithms to predict failures and optimize maintenance schedules.",
-    skills: ["IoT", "Machine Learning", "Digital Twin", "Predictive Maintenance", "Data Analytics"],
-    images: ["./assets/images/project-13.png"],
+    description: "Developed an intelligent predictive maintenance system for electric motors using ESP32-based multi-sensor monitoring with PZEM-004T for power analysis, MPU6050 for vibration detection, MLX90614 for thermal imaging, and DS18B20 for temperature tracking. The system transmits real-time operational data via MQTT to a web dashboard while storing metrics in Firebase Realtime Database. Implemented a hybrid analytics engine combining anomaly detection algorithms for health scoring, bearing fault classification, and a fuzzy logic expert system for fault diagnosis and maintenance recommendations.",
+    skills: ["IoT Sensor Integration", "Node-red", "Real-Time Data Pipeline (MQTT, Firebase)", "Machine Learning (Anomaly Detection)", "Dashboard Digital Twin", "Fuzzy Logic Systems", "Predictive Maintenance", "Rule Based Knowledge", "Industrial Monitoring"],
+    images: ["./assets/images/Project-13.PNG", "./assets/images/Mechasense-1.PNG", "./assets/images/Mechasense-2.PNG", "./assets/images/mechasense-3.jpeg"],
     links: {
-      preview: "#",
-      github: "#",
-      drive: "#"
+      preview: "https://mechasenses-tw2u.vercel.app/",
+      github: "https://github.com/Andre2404/Digital_Twin_Predictive_Maintenance_for_electric_motors",
+      youtube: "https://youtu.be/BjRDWnmDT9M?si=vSkHuWMWKyAJdCWD"
     }
+  },
+  "battery cell machine safety design": {
+    title: "Battery Cell Machine Safety Design",
+    description: "Lithium-ion batteries play a pivotal role in a wide range of applications, from electronic devices to large-scale electrified transportation systems and grid-scale energy storage. Nevertheless, they are vulnerable to both progressive aging and unexpected failures, which can result in catastrophic events such as explosions or fires. Given their expanding global presence, the safety of these batteries and potential hazards from serious malfunctions are now major public concerns.<br><br>Over the past decade, scholars and industry experts are intensively exploring methods to monitor battery safety, spanning from materials to cell, pack and system levels and across various spectral, spatial, and temporal scopes. This project explores the intricacies in predicting battery system evolution and delves into the specialized knowledge essential for data-driven, machine learning models.<br><br>Key areas covered include: (1) supervised and reinforcement learning integrated with battery models, apt for predicting faults/failures and probing into failure causes and safety protocols at the cell level; (2) unsupervised, semi-supervised, and self-supervised learning, advantageous for harnessing vast data sets from battery modules/packs; (3) few-shot learning tailored for gleaning insights from scarce examples, alongside physics-informed machine learning to bolster model generalization and optimize training in data-scarce settings.",
+    skills: ["Battery Management System", "Safety-Critical Design", "Pneumatic Control", "FluidSim", "ISO Safety Standards", "PLC Programming", "Machine Learning", "Fault Diagnosis"],
+    images: ["./assets/images/project-6.png", "./assets/images/bms.jpg", "./assets/images/bms-2.jpg"],
+    links: {
+      paper: "https://www.sciencedirect.com/topics/engineering/battery-safety-issue",
+      article: "https://www.ayaatech.com/news/how-battery-pack-design-for-electric-vehicle-impacts-performance-safety-and-lifecycle/",
+      video: "https://www.mathworks.com/videos/designing-supervisory-control-for-safety-critical-systems-101650.html"
+    }
+  },
+  "labguard smart door lock": {
+    title: "Labguard Smart Door Lock",
+    description: "Developed a remote laboratory access monitoring system using an infrared sensor-based smart door lock to enhance security and oversight. The system detects door status (open/closed) through infrared beam interruption and transmits real-time data to a Firebase Realtime Database, enabling administrators to monitor lab access from any location via a web or mobile dashboard.<br><br>The project focused on creating a reliable, low-power IoT solution that provides instant notifications upon unauthorized entry or unexpected door activity, improving lab security and operational transparency.",
+    skills: ["IoT System Design", "ESP32 Programming", "Sensor Integration (Infrared)", "Firebase Realtime Database", "Real-Time Monitoring", "Embedded Systems", "Web Dashboard Development", "Access Control Systems"],
+    images: ["./assets/images/Lab-1.jpg", "./assets/images/Lab-2.jpg"],
+    links: {}
+  },
+  "plc control: double acting cylinder": {
+    title: "PLC Control: Double Acting Cylinder",
+    description: "Designed and implemented a comprehensive PLC training system using an Omron CP1E module to simulate real-world industrial automation scenarios. Programmed complex control logic for double-acting cylinders using ladder diagrams, integrating multiple industrial components including relays, timers, counters, comparators, and PID controllers.<br><br>Developed sequential operations with structured programming methods to replicate manufacturing processes such as material handling, sorting systems, and automated assembly lines.",
+    skills: ["PLC Programming (CX-Programmer)", "Ladder Logic", "Industrial Automation", "PID Control", "Sequential Control", "Timer/Counter Logic", "Relay Systems", "Process Simulation"],
+    images: ["./assets/images/cx2.png", "./assets/images/cx.mp4"],
+    links: {
+      video: "https://drive.google.com/drive/folders/1fWiQZ1JEnrMQnfoYN1gWqJq-6sTxx2vu"
+    }
+  },
+  "wifi rc car teleoperation": {
+    title: "WiFi RC Car Teleoperation",
+    description: "Engineered a wireless remote-controlled robotic vehicle leveraging the ESP8266 microcontroller for seamless smartphone connectivity. The system features a hybrid motor control architecture, utilizing an L298N driver for high-current load management while interfacing with the ESP8266 for signal processing and direct control. The vehicle is operated via a dedicated mobile application (Bluino), allowing for real-time maneuvering and speed adjustments.<br><br>The development process focused on hardware-software integration, starting with circuit design to manage power distribution between the microcontroller and motors. I programmed the ESP8266 using C++ to establish a stable wireless communication link, parsing data packets from the mobile app into precise PWM signals.",
+    skills: ["IoT (Internet of Things)", "ESP8266", "C++ Programming", "L298N Motor Driver", "Wireless Communication", "Hardware Prototyping", "Mobile App Integration", "Pulse Width Modulation (PWM)"],
+    images: ["./assets/images/Cartel-1.jpeg", "./assets/images/Cartel-2.jpeg", "./assets/images/Cartel-3.jpeg", "./assets/images/Cartel-4.jpeg"],
+    links: {}
+  },
+  "solar pv end-to-end design & digital twin": {
+    title: "Solar PV End-to-End Design & Digital Twin",
+    description: "Developed a solution for rooftop solar PV systems, integrating technical design, costing, and financial analysis into a unified simulation environment. The platform enables end-to-end project lifecycle management through virtual site assessment, energy yield modeling using Helioscope and PVsyst, and automated Bill of Materials (BoM) generation with design-driven logic.<br><br>A custom Python engine powers predictive financial modeling for ROI, LCOE, and payback period analysis, while a modern Next.js interface provides stakeholders with interactive visualization and scenario comparison capabilities.",
+    skills: ["Solar PV Design & Simulation (PVsyst, Helioscope)", "Financial Modeling", "Digital Twin Development", "Python Automation", "Next.js Frontend", "EPC Workflow Integration", "Energy Yield Analysis"],
+    images: ["./assets/images/solar1.jpeg", "./assets/images/solar2.jpeg", "./assets/images/solar3.jpeg"],
+    links: {}
+  },
+  "ultrasonic robot avoider": {
+    title: "Ultrasonic Robot Avoider",
+    description: "Developed an autonomous robot car capable of navigating complex environments without human intervention. The system integrates an ESP32 with a TB6612FNG Motor Driver Shield for precise motor control and utilizes a servo-mounted ultrasonic sensor to create a scanning mechanism.<br><br>This setup allows the robot to actively detect obstacles in the front, left, and right directions, processing spatial data in real-time to avoid collisions.",
+    skills: ["Robotics", "Sensor Integration (Ultrasonic)", "Motor Control (TB6612FNG)", "Logic Algorithms", "Embedded Systems", "Servo Mechanism"],
+    images: ["./assets/images/Ultrasonic-1.jpeg", "./assets/images/Ultrasonic-2.png"],
+    links: {}
   }
 };
 
@@ -349,8 +397,14 @@ const projectModalFunc = function () {
 
 // function to load project data into modal
 const loadProjectModal = function (projectName, projectItemElement) {
-  const project = projectData[projectName.toLowerCase()];
-  if (!project) return;
+  const trimmedName = projectName.trim().toLowerCase();
+  console.log("Looking for project:", trimmedName);
+  console.log("Available keys:", Object.keys(projectData));
+  const project = projectData[trimmedName];
+  if (!project) {
+    console.log("Project not found for:", trimmedName);
+    return;
+  }
 
   // Set title
   projectModalTitle.textContent = project.title;
@@ -458,27 +512,28 @@ const loadProjectModal = function (projectName, projectItemElement) {
 }
 
 // add click event to all project items
-for (let i = 0; i < projectItems.length; i++) {
-  const projectImg = projectItems[i].querySelector("[data-project-img]");
+projectItems.forEach(function (projectItem) {
+  const projectImg = projectItem.querySelector("[data-project-img]");
   if (projectImg) {
     projectImg.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      const projectTitle = projectItems[i].querySelector(".project-title").textContent;
-      loadProjectModal(projectTitle, projectItems[i]);
+      const projectTitle = projectItem.querySelector(".project-title").textContent;
+      console.log("Clicked project title:", projectTitle);
+      loadProjectModal(projectTitle, projectItem);
       projectModalFunc();
     });
   }
 
   // Prevent modal from opening when clicking project links
-  const projectLinks = projectItems[i].querySelectorAll(".project-link-btn");
+  const projectLinks = projectItem.querySelectorAll(".project-link-btn");
   projectLinks.forEach(link => {
     link.addEventListener("click", function (e) {
       e.stopPropagation();
       // Allow link to work normally
     });
   });
-}
+});
 
 // add click event to modal close button
 if (projectModalCloseBtn) {

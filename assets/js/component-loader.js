@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * C  mponent Loader
+ * Component Loader
  * Loads HTML components from separate files
  */
 
