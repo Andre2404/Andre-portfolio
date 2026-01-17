@@ -60,6 +60,23 @@
 
       </div>
 
+      <!-- Language Switcher
+      <div class="lang-switcher-wrapper">
+        <div class="slide-toggle">
+          <input type="radio" name="lang" id="lang-en" value="en" onchange="changeLanguage('en')" checked>
+          <label for="lang-en" class="toggle-item">EN</label>
+
+          <input type="radio" name="lang" id="lang-de" value="de" onchange="changeLanguage('de')">
+          <label for="lang-de" class="toggle-item">DE</label>
+
+          <input type="radio" name="lang" id="lang-zh" value="zh-CN" onchange="changeLanguage('zh-CN')">
+          <label for="lang-zh" class="toggle-item">CN</label>
+
+          <div class="slider-bg"></div>
+        </div>
+        <div id="google_translate_element"></div>
+      </div> -->
+
       <div class="sidebar-info_more">
 
         <div class="separator"></div>
@@ -311,7 +328,7 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Agentic AI and LLM</h4>
+                <h4 class="h4 service-item-title">Agentic and Embodied AI</h4>
 
                 <p class="service-item-text" style="text-align: justify;">
                   Advancing the frontier of autonomous AI systems that can reason, plan, and execute complex tasks
@@ -666,7 +683,7 @@
 
           <div class="title-wrapper">
             <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
+              <ion-icon name="suitcase-outline"></ion-icon>
             </div>
 
             <h3 class="h3">Experience</h3>
@@ -689,7 +706,14 @@
                   execution of campaigns and projects.
                 </p>
 
-            </li>
+                <!-- Gallery Section -->
+                <div class="experience-gallery">
+                  <!-- Use placeholders or actual images if available. User said "foto kecil berjejer". -->
+                  <img src="./assets/images/colcop1.jpg" alt="Experience Proof 1" class="gallery-thumb"
+                    onclick="openModal(this)">
+                  <img src="./assets/images/colcop2.png" alt="Experience Proof 2" class="gallery-thumb"
+                    onclick="openModal(this)">
+                </div>
 
             <li class="timeline-item" style="text-align: justify;">
 
@@ -707,21 +731,121 @@
                 - Developing IoT devices or applications to be showcased at various events.
               </p>
 
+              <!-- Gallery Section -->
+              <div class="experience-gallery">
+                <!-- Use placeholders or actual images if available. User said "foto kecil berjejer". -->
+                <img src="./assets/images/hima1.jpg" alt="Experience Proof 1" class="gallery-thumb"
+                  onclick="openModal(this)">
+                <img src="./assets/images/hima2.png" alt="Experience Proof 2" class="gallery-thumb"
+                  onclick="openModal(this)">
+                <img src="./assets/images/hima3.jpg" alt="Experience Proof 3" class="gallery-thumb"
+                  onclick="openModal(this)">
+              </div>
+
             </li>
 
-            <!-- <li class="timeline-item">
+          </ol>
 
-              <h4 class="h4 timeline-item-title">Web designer</h4>
 
-              <span>2010 — 2013</span>
+        </section>
 
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
+        <!-- VOLUNTEER SECTION -->
+        <section class="timeline">
 
-            </li> -->
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="people-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Volunteer</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Borobudur Waisak Lampion Festival</h4>
+              <span style="color: white;">English Translator</span>
+              <span>Oct 2025</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/borobudur1.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/borobudur3.jpeg" alt="Gallery" class="gallery-thumb"
+                  onclick="openModal(this)">
+                <img src="./assets/images/borobudur2.jpeg" alt="Gallery" class="gallery-thumb"
+                  onclick="openModal(this)">
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Growth Hacking Summit</h4>
+              <span style="color: white;">Liaison Officer</span>
+              <span>June 2025</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/ghs1.jpeg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/ghs2.jpeg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">International Lecture Class</h4>
+              <span style="color: white;">Design and Documentation</span>
+              <span>January 2025</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/kulmum1.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/kulmum2.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Algorithmia Fest 2.0</h4>
+              <span style="color: white;">Builder Supervisor (IoT Building)</span>
+              <span>March 2025</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/algofest1.jpeg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/algofest2.jpeg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <video src="./assets/images/algofest3.mp4" class="gallery-thumb" onclick="openModal(this)"></video>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Metastro</h4>
+              <span style="color: white;">Pathfinder (Events)</span>
+              <span>Jul 2024 - Sept 2024</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/metastro1.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Trisula Suaka</h4>
+              <span style="color: white;">Events and Research</span>
+              <span>Jul 2024 - Oct 2024</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/trisula1.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/trisula2.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/trisula3.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Algorithmia Fest</h4>
+              <span style="color: white;">Media Pulse (Creative)</span>
+              <span>Sept 2024 - Jan 2025</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/algo1.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/algo2.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+                <img src="./assets/images/algo3.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Padumuttara Festival</h4>
+              <span style="color: white;">Visual Designer</span>
+              <span>August 2023 - Sept 2023</span>
+              <div class="experience-gallery">
+                <img src="./assets/images/padumfest1.jpg" alt="Gallery" class="gallery-thumb" onclick="openModal(this)">
+              </div>
+            </li>
 
           </ol>
 
@@ -863,6 +987,129 @@
 
           <ul class="project-list">
 
+            <!-- 1. Solar PV Design -->
+            <li class="project-item active" data-filter-item data-category="industrial automation and simulation"
+              data-project-item>
+              <div class="project-content">
+                <figure class="project-img" data-project-img>
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/solar1.jpeg" alt="Solar PV Design" loading="lazy">
+                </figure>
+                <h3 class="project-title">Solar PV End-to-End Design & Digital Twin</h3>
+                <p class="project-category">Renewable Energy Simulation</p>
+                <div class="project-links">
+                  <!-- No Links -->
+                </div>
+              </div>
+            </li>
+
+            <!-- 2. Robot Avoider -->
+            <li class="project-item active" data-filter-item data-category="internet of things" data-project-item>
+              <div class="project-content">
+                <figure class="project-img" data-project-img>
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/Ultrasonic-1.jpeg" alt="Ultrasonic Robot Avoider" loading="lazy">
+                </figure>
+                <h3 class="project-title">Ultrasonic Robot Avoider</h3>
+                <p class="project-category">Autonomous Robotics</p>
+                <div class="project-links">
+                  <!-- No Links -->
+                </div>
+              </div>
+            </li>
+
+            <!-- 3. Labguard Smart Door -->
+            <li class="project-item active" data-filter-item data-category="internet of things" data-project-item>
+              <div class="project-content">
+                <figure class="project-img" data-project-img>
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/Lab-1.jpg" alt="Labguard Smart Door Lock" loading="lazy">
+                </figure>
+                <h3 class="project-title">Labguard Smart Door Lock</h3>
+                <p class="project-category">IoT Security System</p>
+                <div class="project-links">
+                  <!-- No Links -->
+                </div>
+              </div>
+            </li>
+
+            <!-- 4. RC Car WiFi -->
+            <li class="project-item active" data-filter-item data-category="internet of things" data-project-item>
+              <div class="project-content">
+                <figure class="project-img" data-project-img>
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/Cartel-1.jpeg" alt="WiFi RC Car Teleoperation" loading="lazy">
+                </figure>
+                <h3 class="project-title">WiFi RC Car Teleoperation</h3>
+                <p class="project-category">Wireless Robotics Control</p>
+                <div class="project-links">
+                  <!-- No Links -->
+                </div>
+              </div>
+            </li>
+
+            <!-- 5. Double Acting Cylinder PLC -->
+            <li class="project-item active" data-filter-item data-category="industrial automation and simulation"
+              data-project-item>
+              <div class="project-content">
+                <figure class="project-img" data-project-img>
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/cx2.png" alt="PLC Control Double Acting Cylinder" loading="lazy">
+                </figure>
+                <h3 class="project-title">PLC Control: Double Acting Cylinder</h3>
+                <p class="project-category">Industrial Automation</p>
+                <div class="project-links">
+                  <a href="https://drive.google.com/drive/folders/1fWiQZ1JEnrMQnfoYN1gWqJq-6sTxx2vu"
+                    class="project-link-btn" data-link-type="video" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="videocam-outline"></ion-icon>
+                    <span>Video</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <!-- 6. FluidSim Design -->
+            <li class="project-item active" data-filter-item data-category="industrial automation and simulation"
+              data-project-item>
+              <div class="project-content">
+                <figure class="project-img" data-project-img>
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/bms.jpg" alt="Battery Cell Machine Safety Design" loading="lazy">
+                </figure>
+                <h3 class="project-title">Battery Cell Machine Safety Design</h3>
+                <p class="project-category">Battery Safety & Pneumatic Simulation</p>
+                <div class="project-links">
+                  <a href="https://www.sciencedirect.com/topics/engineering/battery-safety-issue"
+                    class="project-link-btn" data-link-type="paper" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    <span>Paper</span>
+                  </a>
+                  <a href="https://www.ayaatech.com/news/how-battery-pack-design-for-electric-vehicle-impacts-performance-safety-and-lifecycle/"
+                    class="project-link-btn" data-link-type="article" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="newspaper-outline"></ion-icon>
+                    <span>Article</span>
+                  </a>
+                  <a href="https://www.mathworks.com/videos/designing-supervisory-control-for-safety-critical-systems-101650.html"
+                    class="project-link-btn" data-link-type="video" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="videocam-outline"></ion-icon>
+                    <span>Video</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+
             <li class="project-item  active" data-filter-item data-category="web and ai development" data-project-item>
               <div class="project-content">
                 <figure class="project-img" data-project-img>
@@ -964,12 +1211,12 @@
                 <p class="project-category">Dashboard Business Intellgence</p>
 
                 <div class="project-links">
-                  <a href="https://business-inteligence-dashboard-neon-ring.reflex.run/" class="project-link-btn" data-link-type="preview" target="_blank"
+                  <a href="#" class="project-link-btn" data-link-type="preview" target="_blank"
                     rel="noopener noreferrer">
                     <ion-icon name="eye-outline"></ion-icon>
                     <span>Preview</span>
                   </a>
-                  <a href="https://github.com/Andre2404/Dibimbing-Dashboard-AI-Integrated-Business-Intelligence" class="project-link-btn" data-link-type="github" target="_blank"
+                  <a href="#" class="project-link-btn" data-link-type="github" target="_blank"
                     rel="noopener noreferrer">
                     <ion-icon name="logo-github"></ion-icon>
                     <span>GitHub</span>
@@ -997,7 +1244,7 @@
                 <p class="project-category">Epidemiology Analytics Dashboard</p>
 
                 <div class="project-links">
-                  <a href="https://climate-disease-analytics-lime-sun.reflex.run/" class="project-link-btn" data-link-type="preview" target="_blank"
+                  <a href="" class="project-link-btn" data-link-type="preview" target="_blank"
                     rel="noopener noreferrer">
                     <ion-icon name="eye-outline"></ion-icon>
                     <span>Preview</span>
@@ -1199,7 +1446,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-12.png" alt="Autonomous Line Follower Fire-Fighting Chassis"
+                  <img src="./assets/images/project-12.jpeg" alt="Autonomous Line Follower Fire-Fighting Chassis"
                     loading="lazy">
                 </figure>
 
@@ -1213,8 +1460,8 @@
                     <ion-icon name="logo-youtube"></ion-icon>
                     <span>YouTube</span>
                   </a>
-                  <a href="https://github.com/Andre2404/Dispenser-Beras-Cerdas" class="project-link-btn"
-                    data-link-type="github" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/MuzakkiAlAarif/RoboT-Line-Follower-Fighting-System"
+                    class="project-link-btn" data-link-type="github" target="_blank" rel="noopener noreferrer">
                     <ion-icon name="logo-github"></ion-icon>
                     <span>GitHub</span>
                   </a>
@@ -1243,24 +1490,20 @@
                 <p class="project-category">IoT & Machine Learning-Based Industrial Diagnostics</p>
 
                 <div class="project-links">
-                  <a href="#" class="project-link-btn" data-link-type="preview" target="_blank">
+                  <a href="https://mechasenses-tw2u.vercel.app/" class="project-link-btn" data-link-type="preview"
+                    target="_blank" rel="noopener noreferrer">
                     <ion-icon name="eye-outline"></ion-icon>
                     <span>Preview</span>
                   </a>
-                  <a href="https://youtu.be/v72xuCXyyV0?si=R-y_TOnzI_9kcfp7" class="project-link-btn"
-                    data-link-type="preview" target="_blank" rel="noopener noreferrer">
+                  <a href="https://youtu.be/BjRDWnmDT9M?si=vSkHuWMWKyAJdCWD" class="project-link-btn"
+                    data-link-type="youtube" target="_blank" rel="noopener noreferrer">
                     <ion-icon name="logo-youtube"></ion-icon>
                     <span>YouTube</span>
                   </a>
-                  <a href="https://github.com/Andre2404/Dispenser-Beras-Cerdas" class="project-link-btn"
-                    data-link-type="github" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Andre2404/Digital_Twin_Predictive_Maintenance_for_electric_motors"
+                    class="project-link-btn" data-link-type="github" target="_blank" rel="noopener noreferrer">
                     <ion-icon name="logo-github"></ion-icon>
                     <span>GitHub</span>
-                  </a>
-                  <a href="https://www.researchgate.net/publication/374802903_Simulation_Modeling_and_Temperature_Over-Advance_Perception_of_Mine_Hoist_System_Based_on_Digital_Twin_Technology"
-                    class="project-link-btn" data-link-type="research" target="_blank" rel="noopener noreferrer">
-                    <ion-icon name="newspaper-outline"></ion-icon>
-                    <span>Research Paper</span>
                   </a>
                 </div>
               </div>
@@ -1321,6 +1564,22 @@
                   <a href="#" class="project-modal-link-btn" data-project-modal-link="github" target="_blank">
                     <ion-icon name="logo-github"></ion-icon>
                     <span>GitHub</span>
+                  </a>
+                  <a href="#" class="project-modal-link-btn" data-project-modal-link="youtube" target="_blank">
+                    <ion-icon name="logo-youtube"></ion-icon>
+                    <span>YouTube</span>
+                  </a>
+                  <a href="#" class="project-modal-link-btn" data-project-modal-link="paper" target="_blank">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    <span>Paper</span>
+                  </a>
+                  <a href="#" class="project-modal-link-btn" data-project-modal-link="article" target="_blank">
+                    <ion-icon name="newspaper-outline"></ion-icon>
+                    <span>Article</span>
+                  </a>
+                  <a href="#" class="project-modal-link-btn" data-project-modal-link="video" target="_blank">
+                    <ion-icon name="videocam-outline"></ion-icon>
+                    <span>Video</span>
                   </a>
                   <a href="#" class="project-modal-link-btn" data-project-modal-link="drive" target="_blank">
                     <ion-icon name="cloud-download-outline"></ion-icon>
@@ -1886,6 +2145,16 @@
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/simulations.js"></script>
   <script src="./assets/js/gridmaster.js"></script>
+  <script src="./assets/js/gallery.js"></script>
+  <script src="./assets/js/translation.js"></script>
+
+  <!-- Modal for Image Gallery -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <video class="modal-content" id="modalVideo" controls style="display:none;"></video>
+    <div id="caption"></div>
+  </div>
 
   <!--
     - ionicon link
